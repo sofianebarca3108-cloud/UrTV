@@ -12,11 +12,11 @@ import java.util.List;
 
 /** Everything the user picks in settings, and the dashboard URL built from it. */
 final class Prefs {
-    static final String TZ = "Asia/Riyadh";
+    static final String TZ = "Africa/Algiers";
 
     // TheSportsDB id, Arabic name; more teams come from the in-app search
     static final String[][] TEAM_PRESETS = {
-        {"136013", "الهلال"}, {"136137", "المنتخب السعودي"},
+        {"134516", "المنتخب الوطني الجزائري"}, {"133739", "برشلونة"},
     };
 
     // League name exactly as TheSportsDB spells it (checked from CI by .github/tools/team_ids.py), Arabic label.
@@ -79,7 +79,7 @@ final class Prefs {
 
     /** {name, latitude, longitude}; Riyadh until the user picks */
     String[] city() {
-        return new String[] {sp.getString("cityName", "الرياض"), sp.getString("cityLat", "24.6877"), sp.getString("cityLon", "46.7219")};
+        return new String[] {sp.getString("cityName", "الجزائر العاصمة"), sp.getString("cityLat", "36.7538"), sp.getString("cityLon", "3.0588")};
     }
     void setCity(String name, String lat, String lon) {
         sp.edit().putString("cityName", name).putString("cityLat", lat).putString("cityLon", lon).apply();
