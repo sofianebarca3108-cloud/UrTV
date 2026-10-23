@@ -9,7 +9,7 @@
 
     <!-- the launcher (same signing key) reads the settings for its home-screen card -->
     <permission
-        android:name="sa.urtv.screensaver.READ_CONFIG"
+        android:name="sa.urtv.screensaver.algiers.READ_CONFIG"
         android:protectionLevel="signature" />
 
     <!-- opens the launcher's «ترتيب المفضلة» from settings -->
@@ -81,17 +81,17 @@
             android:exported="true"
             android:permission="android.permission.DUMP">
             <intent-filter>
-                <action android:name="sa.urtv.screensaver.GET" />
-                <action android:name="sa.urtv.screensaver.SET" />
-                <action android:name="sa.urtv.screensaver.CITIES" />
-                <action android:name="sa.urtv.screensaver.UPDATE" />
+                <action android:name="sa.urtv.screensaver.algiers.GET" />
+                <action android:name="sa.urtv.screensaver.algiers.SET" />
+                <action android:name="sa.urtv.screensaver.algiers.CITIES" />
+                <action android:name="sa.urtv.screensaver.algiers.UPDATE" />
             </intent-filter>
         </receiver>
 
         <provider
             android:name=".ConfigProvider"
-            android:authorities="sa.urtv.screensaver.config"
+            android:authorities="sa.urtv.screensaver.algiers.config"
             android:exported="true"
-            android:readPermission="sa.urtv.screensaver.READ_CONFIG" />
+            android:readPermission="sa.urtv.screensaver.algiers.READ_CONFIG" />
     </application>
 </manifest>

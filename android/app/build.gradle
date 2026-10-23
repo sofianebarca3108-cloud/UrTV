@@ -7,7 +7,7 @@ android {
     compileSdk 34
 
     defaultConfig {
-        applicationId 'sa.urtv.screensaver'
+        applicationId 'sa.urtv.screensaver.algiers'
         minSdk 21
         targetSdk 34
         // CI passes its run number so every build installs over the previous one; 3.x since the new signing key,

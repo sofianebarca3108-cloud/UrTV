@@ -13,13 +13,13 @@ import java.util.List;
  * The screensaver's settings from ADB, for agents (people use SettingsActivity). Only the shell can send
  * these: the manifest requires android.permission.DUMP. optimize/saver.sh wraps them.
  *
- *   am broadcast -n sa.urtv.screensaver/.SaverReceiver -a sa.urtv.screensaver.GET
- *   am broadcast -n sa.urtv.screensaver/.SaverReceiver -a sa.urtv.screensaver.CITIES
- *   am broadcast -n sa.urtv.screensaver/.SaverReceiver -a sa.urtv.screensaver.SET
+ *   am broadcast -n sa.urtv.screensaver/.SaverReceiver -a sa.urtv.screensaver.algiers.GET
+ *   am broadcast -n sa.urtv.screensaver/.SaverReceiver -a sa.urtv.screensaver.algiers.CITIES
+ *   am broadcast -n sa.urtv.screensaver/.SaverReceiver -a sa.urtv.screensaver.algiers.SET
  *       [--es city 'الرس'] [--es lat 25.86 --es lon 43.49] [--es teams '136013:Al-Hilal,150643:Al-Zulfi']
  *       [--es panel prayers] [--es home_panel none] [--es minrating 7] [--es genres Drama,Comedy] [--es langs English]
  *       [--es photos 30] [--es idle 10]
- *   am broadcast -n sa.urtv.screensaver/.SaverReceiver -a sa.urtv.screensaver.UPDATE
+ *   am broadcast -n sa.urtv.screensaver/.SaverReceiver -a sa.urtv.screensaver.algiers.UPDATE
  *
  * photos = minutes between background photos (Prefs.PHOTO_MINUTES). idle = minutes before the TV starts the
  * screensaver (Prefs.IDLE_MINUTES): this is the system's screen_off_timeout, which a receiver (it runs as this
@@ -34,10 +34,10 @@ public class SaverReceiver extends BroadcastReceiver {
         Prefs p = new Prefs(c);
         String action = String.valueOf(i.getAction());
         switch (action) {
-            case "sa.urtv.screensaver.GET":
+            case "sa.urtv.screensaver.algiers.GET":
                 setResultData(describe(c, p));
                 return;
-            case "sa.urtv.screensaver.CITIES": {
+            case "sa.urtv.screensaver.algiers.CITIES": {
                 StringBuilder b = new StringBuilder();
                 for (Cities.Region r : Cities.REGIONS) {
                     b.append(r.name).append(": ");
@@ -48,7 +48,7 @@ public class SaverReceiver extends BroadcastReceiver {
                 setResultData(b.toString().trim());
                 return;
             }
-            case "sa.urtv.screensaver.UPDATE": {
+            case "sa.urtv.screensaver.algiers.UPDATE": {
                 final PendingResult pending = goAsync();   // a download: off the main thread
                 final Context app = c.getApplicationContext();
                 new Thread(() -> {
@@ -57,7 +57,7 @@ public class SaverReceiver extends BroadcastReceiver {
                 }).start();
                 return;
             }
-            case "sa.urtv.screensaver.SET":
+            case "sa.urtv.screensaver.algiers.SET":
                 setResultData(set(c, p, i));
                 return;
             default:
