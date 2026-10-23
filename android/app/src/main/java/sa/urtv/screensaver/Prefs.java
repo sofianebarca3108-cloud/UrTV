@@ -12,7 +12,7 @@ import java.util.List;
 
 /** Everything the user picks in settings, and the dashboard URL built from it. */
 final class Prefs {
-    static final String TZ = "Asia/Riyadh";
+    static final String TZ = "Africa/Algiers";
 
     // TheSportsDB id, Arabic name; more teams come from the in-app search
     static final String[][] TEAM_PRESETS = {
